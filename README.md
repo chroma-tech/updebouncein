@@ -32,4 +32,8 @@ The constructor provides an optional named argument ```debounce_ms```.  The defa
 ## Configurable Logic (high/low) For Button Press
 The constructor provides an optional named argument ```pin_logic_pressed``` which is ```True``` by default.  This parameter informs the driver what the logic state of the pin should be when the button is pressed.  If ```pin_logic_pressed``` is ```True``` the driver checks the actual pin input for a high level to associate with the pressed event.  If ```pin_logic_pressed``` is ```False``` a low level is associated with the pressed event.  The constructor also provides an optional named argument ```pin_pull``` which is ```None``` by default.  The parameter can be set to ```Pin.PULL_DOWN``` or ```Pin.PULL_UP``` as required.
 
+## Installation
+
+```mpremote connect /dev/cu.usbmodem1234561 mip install github:chroma-tech/debounced_input```
+
 
