@@ -34,6 +34,6 @@ The constructor provides an optional named argument ```pin_logic_pressed``` whic
 
 ## Installation
 
-```mpremote connect /dev/cu.usbmodem1234561 mip install github:chroma-tech/debounced_input```
+```mpremote connect /dev/cu.usbmodem1234561 mip install github:chroma-tech/updebouncein```
 
 
