@@ -1,0 +1,13 @@
+{
+  "urls": [
+    [
+      "debounced_input/__init__.py",
+      "github:chroma-tech/debounced_input/__init__.py"
+    ],
+    [
+      "debounced_input/debounced_input.py",
+      "github:chroma-tech/debounced_input/debounced_input.py"
+    ]
+  ],
+  "version": "0.1"
+}
