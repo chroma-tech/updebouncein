@@ -1,5 +1,6 @@
 from machine import Pin, Timer
 import time
+import micropython
 
 class DebouncedInput:
     """Micropython Debounced GPIO Input Class"""
@@ -35,13 +36,15 @@ class DebouncedInput:
                 ms_since_last_press = 0
             else:
                 ms_since_last_press = time.ticks_diff(self.last_press_ms, self.last_release_ms) + 2*self.debounce_ms
-            self.callback(self.pin_num, True, ms_since_last_press)
+            #self.callback(self.pin_num, True, ms_since_last_press)
+            micropython.schedule(self.callback, self)
         elif ((self.expected_value == False) and (current_value == False)):
             #print("Button released")
             self.expected_value = True
             self.last_release_ms = time.ticks_ms()
             ms_duration_of_press = time.ticks_diff(self.last_release_ms, self.last_press_ms) + 2*self.debounce_ms
-            self.callback(self.pin_num, False, ms_duration_of_press)
+            micropython.schedule(self.callback, self)
+            #self.callback(self.pin_num, False, ms_duration_of_press)
         #else:
             #print("Missed edge: expected:", self.expected_value, " actual:", current_value)
             
@@ -55,6 +58,8 @@ class DebouncedInput:
         
         # Disable pin interrupt
         self.pin.irq(trigger=0)
-        
+
+    def pressed(self):
+        return not self.expected_value    
 
     
